@@ -163,14 +163,19 @@ with st.form("vark_form"):
         choice = st.radio(
             label=f"q{i}",
             options=list(item["opts"].keys()),
+            index=None,
             label_visibility="collapsed",
         )
-        responses.append(item["opts"][choice])
+        responses.append(item["opts"][choice] if choice else None)
         st.write("")
 
     submitted = st.form_submit_button("See my results")
 
 if submitted:
+    if any(choice is None for choice in responses):
+        st.warning("Please answer every question before viewing results.")
+        st.stop()
+
     for code in responses:
         scores[code] += 1
 
