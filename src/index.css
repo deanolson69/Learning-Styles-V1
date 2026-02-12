@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply text-slate-900;
+}
+
+input, select, textarea {
+  @apply border rounded px-2 py-1 w-full;
+}
+
+button {
+  @apply rounded px-3 py-2;
+}

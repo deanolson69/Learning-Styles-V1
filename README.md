@@ -1,35 +1,39 @@
-# Learning Preferences Finder (Streamlit)
+# PEI Planner
 
-This is a simple Streamlit web app that helps users identify learning **preferences** using a VARK-style questionnaire:
-- Visual
-- Aural (Auditory)
-- Read/Write
-- Kinesthetic (Hands-on)
+A mobile-first React + Vite + TypeScript + Tailwind app for planning a 1-week Prince Edward Island group trip.
 
-## Option A: Run locally (quick test)
-1) Install Python 3.10+  
-2) In this folder, run:
-   - pip install -r requirements.txt
-   - streamlit run app.py
+## Features
+- Family + member setup with per-family AM/PM availability by day.
+- Preloaded editable PEI activity inventory (Anne of Green Gables, food, tourism, niche).
+- 0-5 ratings per member with completion tracking and filters.
+- Recommendation engine for:
+  - Best all-together activities
+  - Better separate-family activities
+  - Two-family subgroup suggestions
+- Half-day trip logic:
+  - Arrival day: PM-only
+  - Departure day: AM-only
+- 7+ day schedule grid (start-to-end inclusive), respecting disabled slots.
+- Export:
+  - Copyable summary text
+  - JSON download + JSON import (includes slot availability)
+  - CSV download for activity scoring
+- Local persistence in `localStorage` with a versioned schema and safe fallback migration.
 
-## Option B: Share with friends/family (recommended)
-Use Streamlit Community Cloud to host it for free.
+## Run
+```bash
+npm install
+npm run dev
+```
 
-### Step 1: Create a GitHub repo
-1) Go to GitHub and create a new repository (public is simplest).
-2) Upload these two files to the repo:
-   - app.py
-   - requirements.txt
+Then open the local URL shown by Vite (typically `http://localhost:5173`).
 
-### Step 2: Deploy on Streamlit Community Cloud
-1) Go to Streamlit Community Cloud and connect your GitHub.
-2) Create a new app:
-   - Repository: (your repo)
-   - Branch: main
-   - Main file path: app.py
-3) Deploy.
-
-You will get a shareable URL that works on desktop and mobile browsers.
+## Build
+```bash
+npm run build
+npm run preview
+```
 
 ## Notes
-- This app focuses on learning preferences rather than claiming a single fixed learning style.
+- No backend, no login, no external services required.
+- Designed for local use on one device; merge data using JSON export/import.
